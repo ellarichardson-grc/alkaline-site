@@ -9,15 +9,11 @@
 <meta property="og:description" content="Made for the whole day, not just one part of it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ivory: #fafafa;
-    --sand: #dcdcdc;
-    --stone: #c2c2c2;
-    --glass: #ececec;
-    --mahogany: #111111;
-    --ink: #111111;
+    --paper: #ffffff;
+    --ink: #0d0d0d;
     --serif: "Playfair Display", "Didot", "Bodoni 72", Georgia, serif;
     --sans: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
@@ -25,93 +21,55 @@
   html { -webkit-text-size-adjust: 100%; }
   body {
     min-height: 100vh;
-    background: var(--ivory);
+    background: var(--paper);
     color: var(--ink);
     font-family: var(--sans);
     -webkit-font-smoothing: antialiased;
-  }
-
-  .page {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 28px 40px 36px;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-  }
-
-  /* masthead */
-  .top {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 10.5px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--mahogany);
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--ink);
-  }
-  .masthead {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(64px, 17vw, 210px);
-    line-height: 0.9;
-    letter-spacing: -0.05em;
+    justify-content: center;
     text-align: center;
-    text-transform: lowercase;
-    color: var(--ink);
-    padding: 22px 0 14px;
-    border-bottom: 1px solid var(--ink);
+    padding: 48px 24px 40px;
   }
 
-  /* body */
-  .grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 56px;
-    align-items: center;
-    padding: 44px 0 36px;
-  }
-  .kicker {
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--mahogany);
-    margin-bottom: 22px;
-  }
-  h1 {
+  main { width: 100%; max-width: 960px; }
+
+  .mark {
     font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(44px, 7vw, 92px);
-    line-height: 0.98;
-    letter-spacing: -0.035em;
-    color: var(--ink);
+    font-size: clamp(76px, 21vw, 250px);
+    line-height: 0.88;
+    letter-spacing: -0.06em;
+    text-transform: lowercase;
   }
-  h1 em { font-style: italic; font-weight: 400; }
-  .sub {
-    margin-top: 26px;
-    font-size: clamp(13px, 1.5vw, 17px);
+
+  .line {
+    margin: clamp(18px, 3vw, 34px) auto 0;
+    max-width: 22ch;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 3.4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .tag {
+    margin-top: clamp(22px, 3vw, 34px);
+    font-size: 11px;
     font-weight: 300;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.42em;
+    text-indent: 0.42em;
     text-transform: uppercase;
-    line-height: 1.7;
-    color: var(--ink);
-  }
-  .lede {
-    margin-top: 28px;
-    max-width: 44ch;
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(17, 17, 17, 0.78);
   }
 
   form {
-    margin-top: 34px;
-    max-width: 480px;
+    margin: clamp(30px, 4vw, 48px) auto 0;
+    width: 100%;
+    max-width: 420px;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     border-bottom: 1px solid var(--ink);
   }
   input[type="email"] {
@@ -121,147 +79,81 @@
     border: 0;
     background: transparent;
     font-family: var(--sans);
+    font-weight: 300;
     font-size: 16px;
+    letter-spacing: 0.04em;
     color: var(--ink);
     outline: none;
     border-radius: 0;
+    text-align: left;
   }
-  input[type="email"]::placeholder { color: rgba(17, 17, 17, 0.45); letter-spacing: 0.04em; }
+  input[type="email"]::placeholder { color: rgba(13, 13, 13, 0.4); }
   button {
     border: 0;
-    background: var(--ink);
-    color: var(--ivory);
+    background: transparent;
+    color: var(--ink);
     font-family: var(--sans);
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.26em;
+    font-weight: 400;
+    letter-spacing: 0.34em;
     text-transform: uppercase;
-    padding: 0 22px;
+    padding: 14px 0 14px 18px;
     cursor: pointer;
-    border-radius: 0;
     white-space: nowrap;
-    transition: background 0.2s;
   }
-  button:hover { background: var(--mahogany); }
-  button:disabled { opacity: 0.55; cursor: default; }
+  button:hover { opacity: 0.6; }
+  button:disabled { opacity: 0.4; cursor: default; }
   .hp { position: absolute; left: -9999px; }
+
   #msg {
-    margin-top: 14px;
+    margin-top: 16px;
     min-height: 1.5em;
     font-family: var(--serif);
     font-style: italic;
-    font-size: 19px;
-    color: var(--mahogany);
+    font-size: 20px;
   }
   .note {
-    margin-top: 4px;
-    font-size: 11px;
+    margin: 2px auto 0;
+    max-width: 420px;
+    font-size: 10.5px;
+    font-weight: 300;
     letter-spacing: 0.04em;
     line-height: 1.6;
-    max-width: 480px;
-    color: rgba(17, 17, 17, 0.55);
-  }
-
-  /* arch panel: swap in a photo by adding  background-image: url(look-01.jpg)  to .arch */
-  .figure { display: flex; flex-direction: column; align-items: center; }
-  .arch {
-    width: min(100%, 400px);
-    aspect-ratio: 3 / 4.4;
-    border-radius: 999px 999px 0 0;
-    background:
-      radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,0.65), rgba(255,255,255,0) 60%),
-      linear-gradient(180deg, var(--glass) 0%, var(--sand) 62%, var(--stone) 100%);
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .arch::after {
-    content: "pH";
-    position: absolute;
-    left: 50%;
-    bottom: 8%;
-    transform: translateX(-50%);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(64px, 9vw, 120px);
-    color: rgba(17, 17, 17, 0.9);
-    letter-spacing: -0.02em;
-  }
-  .caption {
-    width: min(100%, 400px);
-    display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
-    font-size: 10px;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    color: var(--mahogany);
+    color: rgba(13, 13, 13, 0.5);
   }
 
   footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 14px;
-    border-top: 1px solid var(--ink);
+    margin-top: clamp(40px, 7vw, 80px);
     font-size: 10.5px;
-    letter-spacing: 0.28em;
+    font-weight: 300;
+    letter-spacing: 0.34em;
+    text-indent: 0.34em;
     text-transform: uppercase;
-    color: var(--mahogany);
   }
-  footer a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+  footer a { color: inherit; text-decoration: none; }
+  footer a:hover { opacity: 0.6; }
 
-  @media (max-width: 860px) {
-    .page { padding: 20px 20px 28px; }
-    .grid { grid-template-columns: 1fr; gap: 40px; padding: 32px 0 28px; }
-    .figure { order: -1; }
-    .arch { width: min(78%, 320px); }
-    .caption { width: min(78%, 320px); }
-    .top span:nth-child(2) { display: none; }
-  }
-  @media (max-width: 440px) {
-    footer { flex-direction: column; gap: 10px; }
-    button { padding: 0 16px; letter-spacing: 0.2em; }
+  @media (max-width: 480px) {
+    .tag { font-size: 10px; letter-spacing: 0.28em; text-indent: 0.28em; }
   }
 </style>
 </head>
 <body>
-  <div class="page">
-    <div class="top">
-      <span>No. 01</span>
-      <span>The Waitlist</span>
-      <span>Spring 2027</span>
-    </div>
+  <main>
+    <h1 class="mark">alkaline</h1>
+    <p class="line">Made for the whole day, not just one part of it.</p>
+    <p class="tag">The Perfect pH Tank &nbsp;&middot;&nbsp; Coming Soon</p>
 
-    <div class="masthead">alkaline</div>
+    <form id="waitlist" autocomplete="on">
+      <input type="email" id="email" name="email" placeholder="Your email" required aria-label="email address">
+      <input type="text" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" id="btn">Join</button>
+    </form>
+    <p id="msg" role="status" aria-live="polite"></p>
+    <p class="note">By joining, you agree to get emails from alkaline about the launch. Unsubscribe anytime.</p>
 
-    <main class="grid">
-      <section>
-        <p class="kicker">Launch 01 &mdash; The Perfect pH Tank</p>
-        <h1>Made for the <em>whole day,</em> not just one part of it.</h1>
-        <p class="lede">Join the waitlist for first access and early drops.</p>
-
-        <form id="waitlist" autocomplete="on">
-          <input type="email" id="email" name="email" placeholder="Your email" required aria-label="email address">
-          <input type="text" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" id="btn">Join</button>
-        </form>
-        <p id="msg" role="status" aria-live="polite"></p>
-        <p class="note">By joining, you agree to get emails from alkaline about the launch. Unsubscribe anytime.</p>
-      </section>
-
-      <aside class="figure" aria-hidden="true">
-        <div class="arch"></div>
-        <div class="caption"><span>Look 01</span><span>Coming soon</span></div>
-      </aside>
-    </main>
-
-    <footer>
-      <span>Alkaline &copy; 2026</span>
-      <a href="https://instagram.com/alkalinela" target="_blank" rel="noopener">@alkalinela</a>
-    </footer>
-  </div>
+    <footer><a href="https://instagram.com/alkalinela" target="_blank" rel="noopener">@alkalinela</a></footer>
+  </main>
 
 <script>
   // Klaviyo public key (Site ID) and Waitlist list ID.
