@@ -4,118 +4,264 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>alkaline | coming soon</title>
-<meta name="description" content="made for the whole day, not just one part of it. the perfect pH tank is coming soon.">
+<meta name="description" content="Made for the whole day, not just one part of it. The Perfect pH Tank. Coming soon.">
 <meta property="og:title" content="alkaline | coming soon">
-<meta property="og:description" content="made for the whole day, not just one part of it.">
+<meta property="og:description" content="Made for the whole day, not just one part of it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
+    --ivory: #f6f2ea;
     --sand: #ece4d8;
     --stone: #d9cfc0;
     --glass: #c3d6d3;
     --mahogany: #3a2a24;
-    --ink: #1f1814;
+    --ink: #1a1411;
+    --serif: "Bodoni Moda", "Didot", "Bodoni 72", "Playfair Display", Georgia, serif;
+    --sans: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { min-height: 100%; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     min-height: 100vh;
-    background: linear-gradient(180deg, var(--sand) 0%, var(--stone) 100%);
+    background: var(--ivory);
     color: var(--ink);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 40px 36px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 32px 20px;
   }
-  .mark {
-    font-size: clamp(28px, 7vw, 44px);
-    letter-spacing: 0.42em;
-    text-indent: 0.42em;
-    font-weight: 500;
-    text-transform: lowercase;
-    color: var(--mahogany);
-  }
-  /* To use your real wordmark: put logo.svg or logo.png in this folder and
-     replace the .mark div below with: <img class="logo" src="logo.svg" alt="alkaline"> */
-  .logo { width: min(320px, 70vw); height: auto; }
-  h1 {
-    margin-top: 28px;
-    font-size: clamp(18px, 4.4vw, 24px);
-    font-weight: 400;
-    max-width: 22ch;
-    line-height: 1.35;
-    color: var(--mahogany);
-  }
-  .sub {
-    margin-top: 14px;
-    font-size: 14px;
-    letter-spacing: 0.08em;
-    color: rgba(31, 24, 20, 0.7);
-  }
-  form {
-    margin-top: 36px;
-    width: 100%;
-    max-width: 420px;
+
+  /* masthead */
+  .top {
     display: flex;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mahogany);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .masthead {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(64px, 17vw, 210px);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    text-align: center;
+    text-transform: lowercase;
+    color: var(--ink);
+    padding: 22px 0 14px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  /* body */
+  .grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+    padding: 44px 0 36px;
+  }
+  .kicker {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mahogany);
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(44px, 7vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  h1 em { font-style: italic; font-weight: 400; }
+  .sub {
+    margin-top: 26px;
+    font-size: clamp(13px, 1.5vw, 17px);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .lede {
+    margin-top: 16px;
+    max-width: 44ch;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(26, 20, 17, 0.78);
+  }
+
+  form {
+    margin-top: 34px;
+    max-width: 480px;
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--ink);
   }
   input[type="email"] {
     flex: 1;
     min-width: 0;
-    padding: 14px 16px;
-    border: 1px solid rgba(58, 42, 36, 0.35);
-    background: rgba(255, 255, 255, 0.55);
+    padding: 14px 0;
+    border: 0;
+    background: transparent;
+    font-family: var(--sans);
     font-size: 16px;
     color: var(--ink);
-    border-radius: 2px;
     outline: none;
+    border-radius: 0;
   }
-  input[type="email"]:focus { border-color: var(--mahogany); background: #fff; }
+  input[type="email"]::placeholder { color: rgba(26, 20, 17, 0.45); letter-spacing: 0.04em; }
   button {
-    padding: 14px 20px;
     border: 0;
-    background: var(--mahogany);
-    color: var(--sand);
-    font-size: 13px;
-    letter-spacing: 0.12em;
+    background: var(--ink);
+    color: var(--ivory);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    padding: 0 22px;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 0;
     white-space: nowrap;
+    transition: background 0.2s;
   }
-  button:disabled { opacity: 0.6; cursor: default; }
+  button:hover { background: var(--mahogany); }
+  button:disabled { opacity: 0.55; cursor: default; }
   .hp { position: absolute; left: -9999px; }
-  #msg { margin-top: 16px; min-height: 1.4em; font-size: 14px; color: var(--mahogany); }
-  .note {
-    margin-top: 10px;
-    font-size: 12px;
-    max-width: 420px;
-    color: rgba(31, 24, 20, 0.6);
-    line-height: 1.5;
+  #msg {
+    margin-top: 14px;
+    min-height: 1.5em;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--mahogany);
   }
-  footer { margin-top: 48px; font-size: 13px; letter-spacing: 0.08em; }
-  footer a { color: var(--mahogany); text-decoration: none; border-bottom: 1px solid rgba(58, 42, 36, 0.4); }
-  @media (max-width: 440px) { form { flex-direction: column; } }
+  .note {
+    margin-top: 4px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    max-width: 480px;
+    color: rgba(26, 20, 17, 0.55);
+  }
+
+  /* arch panel: swap in a photo by adding  background-image: url(look-01.jpg)  to .arch */
+  .figure { display: flex; flex-direction: column; align-items: center; }
+  .arch {
+    width: min(100%, 400px);
+    aspect-ratio: 3 / 4.4;
+    border-radius: 999px 999px 0 0;
+    background:
+      radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,0.65), rgba(255,255,255,0) 60%),
+      linear-gradient(180deg, var(--glass) 0%, var(--sand) 62%, var(--stone) 100%);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .arch::after {
+    content: "pH";
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(64px, 9vw, 120px);
+    color: rgba(58, 42, 36, 0.85);
+    letter-spacing: -0.02em;
+  }
+  .caption {
+    width: min(100%, 400px);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--mahogany);
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--ink);
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mahogany);
+  }
+  footer a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+
+  @media (max-width: 860px) {
+    .page { padding: 20px 20px 28px; }
+    .grid { grid-template-columns: 1fr; gap: 40px; padding: 32px 0 28px; }
+    .figure { order: -1; }
+    .arch { width: min(78%, 320px); }
+    .caption { width: min(78%, 320px); }
+    .top span:nth-child(2) { display: none; }
+  }
+  @media (max-width: 440px) {
+    footer { flex-direction: column; gap: 10px; }
+    button { padding: 0 16px; letter-spacing: 0.2em; }
+  }
 </style>
 </head>
 <body>
-  <div class="mark">alkaline</div>
+  <div class="page">
+    <div class="top">
+      <span>No. 01</span>
+      <span>The Waitlist</span>
+      <span>Spring 2027</span>
+    </div>
 
-  <h1>made for the whole day, not just one part of it.</h1>
-  <p class="sub">the perfect pH tank. coming soon.</p>
+    <div class="masthead">alkaline</div>
 
-  <form id="waitlist" autocomplete="on">
-    <input type="email" id="email" name="email" placeholder="your email" required aria-label="email address">
-    <input type="text" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button type="submit" id="btn">join the waitlist</button>
-  </form>
-  <p id="msg" role="status" aria-live="polite"></p>
-  <p class="note">by joining, you agree to get emails from alkaline about the launch. unsubscribe anytime.</p>
+    <main class="grid">
+      <section>
+        <p class="kicker">Launch 01 &mdash; The Perfect pH Tank</p>
+        <h1>Made for the <em>whole day,</em> not just one part of it.</h1>
+        <p class="sub">Class &middot; Coffee &middot; Dinner &middot; Out</p>
+        <p class="lede">One tank, built to move through all of it. Join the waitlist for first access, early drops, and a note the day it launches.</p>
 
-  <footer>
-    <a href="https://instagram.com/alkalinela" target="_blank" rel="noopener">@alkalinela</a>
-  </footer>
+        <form id="waitlist" autocomplete="on">
+          <input type="email" id="email" name="email" placeholder="Your email" required aria-label="email address">
+          <input type="text" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" id="btn">Join</button>
+        </form>
+        <p id="msg" role="status" aria-live="polite"></p>
+        <p class="note">By joining, you agree to get emails from alkaline about the launch. Unsubscribe anytime.</p>
+      </section>
+
+      <aside class="figure" aria-hidden="true">
+        <div class="arch"></div>
+        <div class="caption"><span>Look 01</span><span>Coming soon</span></div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Alkaline &copy; 2026</span>
+      <a href="https://instagram.com/alkalinela" target="_blank" rel="noopener">@alkalinela</a>
+    </footer>
+  </div>
 
 <script>
   // Klaviyo public key (Site ID) and Waitlist list ID.
@@ -151,13 +297,13 @@
     }).then(function (res) {
       if (res.ok) {
         form.style.display = "none";
-        msg.textContent = "you're on the list. we'll be in touch.";
+        msg.textContent = "You're on the list. We'll be in touch.";
       } else {
         throw new Error("bad status " + res.status);
       }
     }).catch(function () {
       btn.disabled = false;
-      msg.textContent = "something went wrong. try again?";
+      msg.textContent = "Something went wrong. Try again?";
     });
   });
 </script>
