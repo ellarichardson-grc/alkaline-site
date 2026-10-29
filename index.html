@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>alkaline | coming soon</title>
-<meta name="description" content="Made for the whole day, not just one part of it. The Perfect pH Tank. Coming soon.">
+<meta name="description" content="alkaline (v.) to bring back to balance. Made for the whole day, not just one part of it. The Perfect pH Tank, coming soon.">
 <meta property="og:title" content="alkaline | coming soon">
 <meta property="og:description" content="Made for the whole day, not just one part of it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #ffffff;
-    --ink: #0d0d0d;
+    --paper: #f3eee4;
+    --ink: #14110f;
+    --gold: #a98450;
     --serif: "Playfair Display", "Didot", "Bodoni 72", Georgia, serif;
     --sans: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
@@ -25,137 +26,279 @@
     color: var(--ink);
     font-family: var(--sans);
     -webkit-font-smoothing: antialiased;
+  }
+  /* soft newsprint grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .22  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .sheet {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 26px 36px 34px;
+  }
+
+  .dateline {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 48px 24px 40px;
-  }
-
-  main { width: 100%; max-width: 960px; }
-
-  .mark {
-    font-family: "Bodoni Moda", var(--serif);
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-size: clamp(46px, 10.5vw, 132px);
-    line-height: 1;
-    letter-spacing: 0.16em;
-    text-indent: 0.16em;
-    text-transform: lowercase;
-  }
-
-  .line {
-    margin: clamp(18px, 3vw, 34px) auto 0;
-    max-width: 22ch;
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(22px, 3.4vw, 40px);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-  }
-
-  .tag {
-    margin-top: clamp(22px, 3vw, 34px);
-    font-size: 11px;
-    font-weight: 300;
-    letter-spacing: 0.42em;
-    text-indent: 0.42em;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 4px double var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-size: 10.5px;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
   }
 
+  .mark {
+    text-align: center;
+    font-family: "Bodoni Moda", var(--serif);
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: clamp(50px, 11vw, 138px);
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-indent: 0.14em;
+    text-transform: lowercase;
+    padding: clamp(22px, 3.5vw, 40px) 0 clamp(18px, 3vw, 32px);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 0;
+    padding: clamp(30px, 4vw, 54px) 0 18px;
+  }
+  .entry { padding-right: clamp(24px, 4vw, 52px); }
+  .art {
+    padding-left: clamp(24px, 4vw, 52px);
+    border-left: 1px solid rgba(20, 17, 15, 0.45);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .label {
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .word {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(46px, 6.4vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .pron {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+  }
+  .pron i { font-family: var(--serif); font-size: 17px; letter-spacing: 0.02em; margin-left: 8px; }
+
+  .defs {
+    margin-top: 22px;
+    list-style: none;
+    counter-reset: d;
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.35;
+  }
+  .defs li { counter-increment: d; padding-left: 1.7em; position: relative; margin-bottom: 8px; }
+  .defs li::before {
+    content: counter(d) ".";
+    position: absolute; left: 0;
+    font-family: var(--sans); font-size: 12px; letter-spacing: 0.1em; top: 0.5em;
+  }
+  .uses {
+    margin-top: 18px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(17px, 1.9vw, 21px);
+    line-height: 1.5;
+    color: rgba(20, 17, 15, 0.82);
+  }
+  .uses span { display: block; }
+
+  .card {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    padding: 12px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  .card b { font-weight: 400; color: var(--gold); margin-right: 8px; }
+
+  .deck {
+    margin-top: 26px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 20ch;
+  }
+
   form {
-    margin: clamp(30px, 4vw, 48px) auto 0;
-    width: 100%;
-    max-width: 420px;
+    margin-top: 28px;
+    max-width: 440px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--ink);
   }
   input[type="email"] {
-    flex: 1;
-    min-width: 0;
+    flex: 1; min-width: 0;
     padding: 14px 0;
-    border: 0;
-    background: transparent;
+    border: 0; background: transparent;
     font-family: var(--sans);
     font-weight: 300;
     font-size: 16px;
     letter-spacing: 0.04em;
     color: var(--ink);
-    outline: none;
-    border-radius: 0;
-    text-align: left;
+    outline: none; border-radius: 0;
   }
-  input[type="email"]::placeholder { color: rgba(13, 13, 13, 0.4); }
+  input[type="email"]::placeholder { color: rgba(20, 17, 15, 0.42); }
   button {
-    border: 0;
-    background: transparent;
-    color: var(--ink);
+    border: 0; background: transparent; color: var(--ink);
     font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.34em; text-transform: uppercase;
     padding: 14px 0 14px 18px;
-    cursor: pointer;
-    white-space: nowrap;
+    cursor: pointer; white-space: nowrap;
   }
-  button:hover { opacity: 0.6; }
+  button:hover { opacity: 0.55; }
   button:disabled { opacity: 0.4; cursor: default; }
   .hp { position: absolute; left: -9999px; }
-
-  #msg {
-    margin-top: 16px;
-    min-height: 1.5em;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 20px;
-  }
+  #msg { margin-top: 14px; min-height: 1.5em; font-family: var(--serif); font-style: italic; font-size: 20px; }
   .note {
-    margin: 2px auto 0;
-    max-width: 420px;
-    font-size: 10.5px;
-    font-weight: 300;
-    letter-spacing: 0.04em;
-    line-height: 1.6;
-    color: rgba(13, 13, 13, 0.5);
+    margin-top: 2px; max-width: 440px;
+    font-size: 10.5px; font-weight: 300; letter-spacing: 0.04em; line-height: 1.6;
+    color: rgba(20, 17, 15, 0.55);
+  }
+
+  /* golden spiral figure. To add a photo, place it in the .fig-photo box. */
+  .fig { width: 100%; }
+  .fig svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .fig .grid-lines { fill: none; stroke: var(--gold); stroke-width: 1.5; opacity: 0.45; }
+  .fig .spiral { fill: none; stroke: var(--ink); stroke-width: 3.5; stroke-linecap: round; }
+  .fig .dot { fill: var(--gold); }
+  figcaption {
+    margin-top: 14px;
+    display: flex; justify-content: space-between; gap: 12px;
+    font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase;
   }
 
   footer {
-    margin-top: clamp(40px, 7vw, 80px);
-    font-size: 10.5px;
-    font-weight: 300;
-    letter-spacing: 0.34em;
-    text-indent: 0.34em;
-    text-transform: uppercase;
+    margin-top: 22px;
+    padding-top: 12px;
+    border-top: 1px solid var(--ink);
+    display: flex; justify-content: space-between;
+    font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase;
   }
   footer a { color: inherit; text-decoration: none; }
-  footer a:hover { opacity: 0.6; }
+  footer a:hover { opacity: 0.55; }
 
-  @media (max-width: 480px) {
-    .tag { font-size: 10px; letter-spacing: 0.28em; text-indent: 0.28em; }
+  @media (max-width: 860px) {
+    .sheet { padding: 18px 20px 28px; }
+    .grid { grid-template-columns: 1fr; }
+    .entry { padding-right: 0; }
+    .art { padding: 40px 0 0; border-left: 0; margin-top: 34px; border-top: 1px solid rgba(20,17,15,0.45); }
+    .dateline span:nth-child(2) { display: none; }
+  }
+  @media (max-width: 440px) {
+    .dateline { font-size: 9.5px; letter-spacing: 0.22em; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    button { padding-left: 12px; letter-spacing: 0.26em; }
   }
 </style>
 </head>
 <body>
-  <main>
+  <div class="sheet">
+    <div class="dateline">
+      <span>Los Angeles</span>
+      <span>The Waitlist</span>
+      <span>Fall 2026</span>
+    </div>
+
     <h1 class="mark">alkaline</h1>
-    <p class="line">Made for the whole day, not just one part of it.</p>
-    <p class="tag">The Perfect pH Tank &nbsp;&middot;&nbsp; Coming Soon</p>
 
-    <form id="waitlist" autocomplete="on">
-      <input type="email" id="email" name="email" placeholder="Your email" required aria-label="email address">
-      <input type="text" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button type="submit" id="btn">Join</button>
-    </form>
-    <p id="msg" role="status" aria-live="polite"></p>
-    <p class="note">By joining, you agree to get emails from alkaline about the launch. Unsubscribe anytime.</p>
+    <main class="grid">
+      <section class="entry">
+        <p class="label">Word of the season</p>
+        <h2 class="word">alkaline</h2>
+        <p class="pron">verb <i>/ˈal·kə·līn/</i></p>
 
-    <footer><a href="https://instagram.com/alkalinela" target="_blank" rel="noopener">@alkalinela</a></footer>
-  </main>
+        <ol class="defs">
+          <li>To bring back to balance.</li>
+          <li>To make a whole day feel easy, soft, and well kept.</li>
+        </ol>
+
+        <p class="uses">
+          <span>&ldquo;Alkaline the morning.&rdquo;</span>
+          <span>&ldquo;She alkalined her whole week.&rdquo;</span>
+          <span>&ldquo;Come over, we&rsquo;ll alkaline on Sunday.&rdquo;</span>
+        </p>
+
+        <div class="card">
+          <span><b>No.</b>01 &mdash; The Perfect pH Tank</span>
+          <span><b>Serves</b>The whole day</span>
+          <span><b>Ready</b>Soon</span>
+        </div>
+
+        <p class="deck">Made for the whole day, not just one part of it.</p>
+
+        <form id="waitlist" autocomplete="on">
+          <input type="email" id="email" name="email" placeholder="Your email" required aria-label="email address">
+          <input type="text" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" id="btn">Join</button>
+        </form>
+        <p id="msg" role="status" aria-live="polite"></p>
+        <p class="note">By joining, you agree to get emails from alkaline about the launch. Unsubscribe anytime.</p>
+      </section>
+
+      <aside class="art" aria-hidden="true">
+        <figure class="fig">
+          <svg viewBox="0 0 1618 1000" xmlns="http://www.w3.org/2000/svg">
+            <g class="grid-lines">
+              <rect x="0" y="0" width="1618" height="1000"/>
+              <rect x="0" y="0" width="1000" height="1000"/>
+              <rect x="1000" y="0" width="618" height="618"/>
+              <rect x="1236" y="618" width="382" height="382"/>
+              <rect x="1000" y="764" width="236" height="236"/>
+              <rect x="1000" y="618" width="146" height="146"/>
+              <rect x="1146" y="618" width="90" height="90"/>
+              <rect x="1180" y="708" width="56" height="56"/>
+              <rect x="1146" y="730" width="34" height="34"/>
+            </g>
+            <path class="spiral" d="M0 1000 A1000 1000 0 0 1 1000 0 A618 618 0 0 1 1618 618 A382 382 0 0 1 1236 1000 A236 236 0 0 1 1000 764 A146 146 0 0 1 1146 618 A90 90 0 0 1 1236 708 A56 56 0 0 1 1180 764 A34 34 0 0 1 1146 730 A22 22 0 0 1 1168 708"/>
+            <circle class="dot" cx="1168" cy="708" r="9"/>
+          </svg>
+          <figcaption><span>Fig. 1 &mdash; Balance, to scale</span><span>&phi; 1.618</span></figcaption>
+        </figure>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Alkaline &copy; 2026</span>
+      <a href="https://instagram.com/alkalinela" target="_blank" rel="noopener">@alkalinela</a>
+    </footer>
+  </div>
 
 <script>
   // Klaviyo public key (Site ID) and Waitlist list ID.
