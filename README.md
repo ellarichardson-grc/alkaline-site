@@ -1,2 +1,176 @@
+[index.html](https://github.com/user-attachments/files/34107024/index.html)
 # alkaline-site
 Alkaline waitlist page
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>alkaline | coming soon</title>
+<meta name="description" content="made for the whole day, not just one part of it. the perfect pH tank is coming soon.">
+<meta property="og:title" content="alkaline | coming soon">
+<meta property="og:description" content="made for the whole day, not just one part of it.">
+<style>
+  :root {
+    --sand: #ece4d8;
+    --stone: #d9cfc0;
+    --glass: #c3d6d3;
+    --mahogany: #3a2a24;
+    --ink: #1f1814;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--sand) 0%, var(--stone) 100%);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 20px;
+  }
+  .mark {
+    font-size: clamp(28px, 7vw, 44px);
+    letter-spacing: 0.42em;
+    text-indent: 0.42em;
+    font-weight: 500;
+    text-transform: lowercase;
+    color: var(--mahogany);
+  }
+  /* To use your real wordmark: put logo.svg or logo.png in this folder and
+     replace the .mark div below with: <img class="logo" src="logo.svg" alt="alkaline"> */
+  .logo { width: min(320px, 70vw); height: auto; }
+  h1 {
+    margin-top: 28px;
+    font-size: clamp(18px, 4.4vw, 24px);
+    font-weight: 400;
+    max-width: 22ch;
+    line-height: 1.35;
+    color: var(--mahogany);
+  }
+  .sub {
+    margin-top: 14px;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: rgba(31, 24, 20, 0.7);
+  }
+  form {
+    margin-top: 36px;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    gap: 8px;
+  }
+  input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 16px;
+    border: 1px solid rgba(58, 42, 36, 0.35);
+    background: rgba(255, 255, 255, 0.55);
+    font-size: 16px;
+    color: var(--ink);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="email"]:focus { border-color: var(--mahogany); background: #fff; }
+  button {
+    padding: 14px 20px;
+    border: 0;
+    background: var(--mahogany);
+    color: var(--sand);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  button:disabled { opacity: 0.6; cursor: default; }
+  .hp { position: absolute; left: -9999px; }
+  #msg { margin-top: 16px; min-height: 1.4em; font-size: 14px; color: var(--mahogany); }
+  .note {
+    margin-top: 10px;
+    font-size: 12px;
+    max-width: 420px;
+    color: rgba(31, 24, 20, 0.6);
+    line-height: 1.5;
+  }
+  footer { margin-top: 48px; font-size: 13px; letter-spacing: 0.08em; }
+  footer a { color: var(--mahogany); text-decoration: none; border-bottom: 1px solid rgba(58, 42, 36, 0.4); }
+  @media (max-width: 440px) { form { flex-direction: column; } }
+</style>
+</head>
+<body>
+  <div class="mark">alkaline</div>
+
+  <h1>made for the whole day, not just one part of it.</h1>
+  <p class="sub">the perfect pH tank. coming soon.</p>
+
+  <form id="waitlist" autocomplete="on">
+    <input type="email" id="email" name="email" placeholder="your email" required aria-label="email address">
+    <input type="text" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" id="btn">join the waitlist</button>
+  </form>
+  <p id="msg" role="status" aria-live="polite"></p>
+  <p class="note">by joining, you agree to get emails from alkaline about the launch. unsubscribe anytime.</p>
+
+  <footer>
+    <a href="https://instagram.com/alkalinela" target="_blank" rel="noopener">@alkalinela</a>
+  </footer>
+
+<script>
+  // SETUP (2 minutes):
+  // 1. Klaviyo > Settings > API keys > copy your PUBLIC API key (6 characters, called "Site ID").
+  // 2. Klaviyo > Lists & Segments > create a list called "Waitlist" > copy its List ID from the URL.
+  // 3. Paste both below, save, and redeploy.
+  var KLAVIYO_PUBLIC_KEY = "VcihA4";
+  var KLAVIYO_LIST_ID = "UgFdBm";
+
+  var form = document.getElementById("waitlist");
+  var msg = document.getElementById("msg");
+  var btn = document.getElementById("btn");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (document.getElementById("company").value) return; // spam trap
+    var email = document.getElementById("email").value.trim();
+    if (!email) return;
+
+    if (KLAVIYO_PUBLIC_KEY.indexOf("YOUR_") === 0) {
+      msg.textContent = "setup needed: add your Klaviyo keys in index.html.";
+      return;
+    }
+
+    btn.disabled = true;
+    msg.textContent = "";
+
+    fetch("https://a.klaviyo.com/client/subscriptions/?company_id=" + encodeURIComponent(KLAVIYO_PUBLIC_KEY), {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "revision": "2024-10-15" },
+      body: JSON.stringify({
+        data: {
+          type: "subscription",
+          attributes: {
+            custom_source: "alkaline waitlist page",
+            profile: { data: { type: "profile", attributes: { email: email } } }
+          },
+          relationships: { list: { data: { type: "list", id: KLAVIYO_LIST_ID } } }
+        }
+      })
+    }).then(function (res) {
+      if (res.ok) {
+        form.style.display = "none";
+        msg.textContent = "you're on the list. we'll be in touch.";
+      } else {
+        throw new Error("bad status " + res.status);
+      }
+    }).catch(function () {
+      btn.disabled = false;
+      msg.textContent = "something went wrong. try again?";
+    });
+  });
+</script>
+</body>
+</html>
