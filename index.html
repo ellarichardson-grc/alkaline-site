@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>alkaline | coming soon</title>
-<meta name="description" content="Made for the whole day, not just one part of it. Drop 001. Coming soon.">
+<meta name="description" content="Built for every version of your day. Drop 001. Coming soon.">
 <meta property="og:title" content="alkaline | coming soon">
-<meta property="og:description" content="Made for the whole day, not just one part of it.">
+<meta property="og:description" content="Built for every version of your day.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
@@ -68,8 +68,16 @@
     text-transform: uppercase;
   }
 
+  .cta {
+    margin-top: clamp(30px, 4vw, 48px);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+  }
+
   form {
-    margin: clamp(30px, 4vw, 48px) auto 0;
+    margin: clamp(14px, 2vw, 20px) auto 0;
     width: 100%;
     max-width: 420px;
     display: flex;
@@ -145,8 +153,10 @@
 <body>
   <main>
     <h1 class="mark"><img src="logo.png" width="970" height="182" alt="ALKALINE"></h1>
-    <p class="line">Made for the whole day, not just one part of it.</p>
+    <p class="line">Built for every version of your day.</p>
     <p class="tag">Drop 001 &nbsp;&middot;&nbsp; Coming Soon</p>
+
+    <p class="cta">Be the first to know when we launch Collection 001</p>
 
     <form id="waitlist" autocomplete="on">
       <input type="email" id="email" name="email" placeholder="Your email" required aria-label="email address">
