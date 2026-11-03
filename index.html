@@ -50,13 +50,12 @@
 
   .line {
     margin: clamp(18px, 3vw, 34px) auto 0;
-    max-width: 22ch;
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(22px, 3.4vw, 40px);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    max-width: 36ch;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: clamp(15px, 2.1vw, 21px);
+    line-height: 1.5;
+    letter-spacing: 0.06em;
   }
 
   .tag {
@@ -68,16 +67,8 @@
     text-transform: uppercase;
   }
 
-  .cta {
-    margin-top: clamp(30px, 4vw, 48px);
-    font-size: 13px;
-    font-weight: 300;
-    letter-spacing: 0.08em;
-    line-height: 1.5;
-  }
-
   form {
-    margin: clamp(14px, 2vw, 20px) auto 0;
+    margin: clamp(30px, 4vw, 48px) auto 0;
     width: 100%;
     max-width: 420px;
     display: flex;
@@ -155,10 +146,8 @@
 <body>
   <main>
     <h1 class="mark"><img src="logo.png" width="970" height="182" alt="ALKALINE"></h1>
-    <p class="line">Built for every version of your day.</p>
+    <p class="line">Be the first to know when we launch Collection 001</p>
     <p class="tag">Drop 001 &nbsp;&middot;&nbsp; Coming Soon</p>
-
-    <p class="cta">Be the first to know when we launch Collection 001</p>
 
     <form id="waitlist" autocomplete="on">
       <input type="email" id="email" name="email" placeholder="Your email" required aria-label="email address">
